@@ -1,59 +1,31 @@
-import React, { useEffect } from 'react'
-import { useAuth } from '../../context/AuthUserContext'
+import React, { useEffect } from 'react';
+import { useAuth } from '../../context/AuthUserContext';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios'
+import Loading from '../../components/Loading';
 
 const Page = () => {
-  const {authUser ,loading , signInWithEmail ,signInwithGoogle ,signOutUser, SignUpWithEmail} = useAuth();
-  const navigate =useNavigate();
+  const { authUser, loading, signInwithGoogle, userRole } = useAuth();
+  const navigate = useNavigate();
 
-  const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+  useEffect(() => {
+    if (!loading && authUser && userRole !== null) {
 
-  useEffect(()=>{
-    async function validate()
-    {
-      if(authUser){
-        const token = await authUser.getIdToken(true);
-        // console.log(token,"token");
-        console.log("email",authUser?.email);
-        try {
-           const response = await axios.post(
-            `${BACKEND_URL}/api/register`,
-            {
-              name: authUser?.displayName ?? "",
-              email: authUser?.email ?? "",
-            },
-            {
-              headers: { Authorization: `Bearer ${token}` },
-            }
-          );
-
-          if (response.data.success) {
-            if (response.data.role == 'user')
-              navigate("/store");
-            if (response.data.role == 'admin')
-              navigate("/admin");
-          }
-          return true;
-        } catch (error) {
-          console.error("Backend Register Error:", error);
-          return false;
-        }
+      if (userRole === "admin") {
+        navigate("/admin/dashboard", { replace: true });
+      } else {
+        navigate("/store", { replace: true });
       }
     }
+  }, [loading, authUser, userRole, navigate]);
 
-    validate();
-  },[authUser,navigate ,BACKEND_URL]);
-
-  if (loading) return <>loading</>;
-
+  if (loading) return <Loading/>;
 
   return (
     <div>
       <h1>REGISTER</h1>
-      <button onClick={()=>signInwithGoogle()}>Sign In with google</button>
+      <button onClick={() => signInwithGoogle()}>Sign In with Google</button>
     </div>
-  )
-}
+  );
+};
 
-export default Page
+export default Page;
