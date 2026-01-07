@@ -1,10 +1,13 @@
 import React from 'react'
 import styles from "./Home.module.css";
 import { useRef, useEffect, useState } from "react";
-import { ArrowDown } from "lucide-react";
+import { ArrowDown, Speaker } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import StatsSection from './StatsSection';
+import EventsSection from './EventsSection';
+import SpeakersSection from './SpeakersSection';
+import PastSpeakersSection from './PastSpeakers';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -274,6 +277,9 @@ const Page = () => {
 
 
         <StatsSection />
+        <EventsSection />
+        <SpeakersSection  />
+        <PastSpeakersSection />
       </div>
 
 
