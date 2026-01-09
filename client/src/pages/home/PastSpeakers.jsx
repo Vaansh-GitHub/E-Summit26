@@ -1,4 +1,29 @@
 import styles from './Speakers.module.css';
+import { Linkedin, Twitter } from 'lucide-react';
+
+const speakers = [
+  {
+    id: 1,
+    name: "Amit Lodha",
+    image: "/images/amit.jpg", 
+    linkedin: "https://www.linkedin.com/in/amit-lodha-07452776/",
+    twitter: "https://x.com/Ipsamitlodha7"
+  },
+  {
+    id: 2,
+    name: "Dr. Tanu Jain",
+    image: "/images/tanujain.jpeg",
+    linkedin: "https://www.linkedin.com/in/dr-tanu-jain-4aa28a131/",
+    twitter: "https://x.com/DrTanuJain1"
+  },
+  {
+    id: 3,
+    name: "Sandeep Jain",
+    image: "/images/SandeepJain.jpeg",
+    linkedin: "https://www.linkedin.com/in/sandeep-jain-/",
+    twitter: "https://x.com/sandeep_jain"
+  }
+];
 
 export default function PastSpeakersSection() {
   return (
@@ -26,34 +51,38 @@ export default function PastSpeakersSection() {
             </div>
       
            <div className={styles.speakerCards}>
-            <Card />
-            <Card />
-            <Card />
+            {speakers.map((speaker) => (
+          <Card key={speaker.id} data={speaker} />
+        ))}
           </div>
       
       </section>
   );
 }
 
-function Card() {
-  return (
-    <div className={styles.card}>
-      {/* Invisible clickable areas */}
-      <a
-        href="https://www.linkedin.com/in/mukeshbansal"
-        target="_blank"
-        rel="noopener noreferrer"
-        className={`${styles.socialLink} ${styles.linkedin}`}
-        aria-label="LinkedIn"
-      />
+function Card({ data }){
+   return (
+   <div className={styles.card}>
 
-      <a
-        href="https://twitter.com/mukeshbansal"
-        target="_blank"
-        rel="noopener noreferrer"
-        className={`${styles.socialLink} ${styles.twitter}`}
-        aria-label="Twitter"
-      />
-    </div>
+      <div className={styles.imageContainer}>
+        <img src={data.image} alt={data.name} className={data.speakerImage} />
+      </div>
+
+    
+      <div className={styles.nameBox}>
+        <span className={styles.nameText}>{data.name}</span>
+      </div>
+
+     
+      <div className={styles.socials}>
+        <a href={data.linkedin} target="_blank" rel="noopener noreferrer" className={styles.socialLink}>
+          <Linkedin size={20} color="#0077b5" />
+        </a>
+        <a href={data.twitter} target="_blank" rel="noopener noreferrer" className={styles.socialLink}>
+          <Twitter size={20} color="#fff" />
+        </a>
+      </div>
+       </div>
+
   );
 }

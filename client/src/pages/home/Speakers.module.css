@@ -80,6 +80,14 @@
   opacity: 0.75;
 }
 
+/* Hide arrows on screens smaller than 768px (Tablets & Phones) */
+@media (max-width: 768px) {
+  .arrowImageleft,
+  .arrowImageright {
+    display: none;
+  }
+}
+
 
 /* ===== SPEAKER CARDS ROW ===== */
 .speakerCards {
@@ -94,56 +102,94 @@
 }
 
 /* ===== SINGLE CARD ===== */
-.speakerCard {
-  width: 260px;
-  aspect-ratio: 3 / 4;
+
+/* Container for the cards */
+.speakerCards {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr); /* Mobile: 1 column */
+  gap: 2rem;
+  padding: 2rem;
+  justify-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+
+/* Desktop: 3 columns */
+@media (min-width: 1024px) {
+  .speakerCards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Individual Card Styling */
+.card {
+  background: rgba(15, 15, 15, 0.8);
+  border: 1px solid #d4af37; /* Gold/Yellow border */
+  border-radius: 15px;
+  padding: 40px 20px;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  width: 100%;
+  max-width: 250px;
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+}
+
+.imageContainer {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid #d4af37;
+  margin-bottom: 20px;
 }
 
 .speakerImage {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
 }
 
-.card {
-  position: relative;
-  width: 260px;
-  aspect-ratio: 3 / 4;
-
-  background-image: url("/images/card.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-
-  border-radius: 10px;
-  overflow: hidden;
-
-  box-shadow:
-    0 0 15px rgba(240, 164, 51, 0.6),
-    0 0 30px rgba(240, 171, 51, 0.4);
+.nameBox {
+  background: #1a1a1a;
+  border: 1px solid #444;
+  padding: 8px 15px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  width: 80%;
+  text-align: center;
 }
 
-/* Base invisible link */
+.nameText {
+  color: #fff;
+  font-family: monospace;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+}
+
+.socials {
+  display: flex;
+  gap: 15px;
+}
+
 .socialLink {
-  position: absolute;
-  bottom: 24px;        /* adjust to match icon position */
-  width: 38px;
-  height: 38px;
-  cursor: pointer;
-  background: transparent;
+  background: #222;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #333;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* LinkedIn hit area */
-.linkedin {
-  left: 50%;
-  transform: translateX(-120%);  /* move left icon */
-}
-
-/* Twitter hit area */
-.twitter {
-  left: 60%;
-  transform: translateX(20%);    /* move right icon */
+.socialLink:hover {
+  background: #333;
+  border-color: #d4af37;
 }
