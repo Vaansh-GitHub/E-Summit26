@@ -321,11 +321,10 @@ const Page = () => {
 
 
 
-        <div id="sponsors" className={`${styles.background4} relative`}>
-          <img src="/home/investors.png" alt="investors" />
-          <img src="/home/investors-list.png" alt="investors" style={{ marginTop: '60px', marginBottom: '60px' }} />
+        
+
+        <div id="sponsors">
           <img src="/home/sponsors.png" alt="sponsors" />
-          <img src="/home/sponsors-list.png" alt="sponsors" style={{ marginTop: '60px' }} />
         </div>
 
       </div>
