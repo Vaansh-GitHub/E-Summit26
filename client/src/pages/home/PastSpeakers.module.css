@@ -2,26 +2,14 @@
 .speakersSection {
   position: relative;
   padding: 4rem 1rem 5rem;
-  background: url("/images/golden.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  background: radial-gradient(
+    circle at top,
+    #1a1a1a 0%,
+    #050507 45%,
+    #000000 100%
+  );
   text-align: center;
 }
-
-.speakersSection::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.75); /* tune: 0.65–0.85 */
-  z-index: 0;
-}
-
-.speakersSection > * {
-  position: relative;
-  z-index: 1;
-}
-
 
 /* ===== HEADER ===== */
 .sectionHeader {
@@ -29,7 +17,7 @@
   align-items: center;
   justify-content: center;
   gap: 24px;
-  margin-bottom: 3rem;
+  margin-bottom: 1.5rem;
 }
 
 .headerBox {
@@ -38,8 +26,8 @@
   height: 160px;
   background: url("/images/header.png") center / contain no-repeat;
   filter:
-    drop-shadow(0 0 25px rgba(255, 200, 0, 0.85))
-    drop-shadow(0 0 60px rgba(255, 170, 0, 0.6));
+    drop-shadow(0 0 25px rgba(255, 200, 0, 0.8))
+    drop-shadow(0 0 60px rgba(255, 170, 0, 0.5));
 }
 
 .headerText {
@@ -68,18 +56,20 @@
   opacity: 0.9;
 }
 
+/* ===== SUBTEXT ===== */
+.subText {
+  max-width: 720px;
+  margin: 0 auto 3rem;
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.6;
+}
+
 /* ===== CARDS ROW ===== */
 .cardsRow {
   display: flex;
   justify-content: center;
   gap: 48px;
-  overflow-x: auto;
-   scrollbar-width: none;        /* Firefox */
-  -ms-overflow-style: none;     /* IE / Edge */
-}
-
-.cardsRow::-webkit-scrollbar {
-  display: none;                /* Chrome / Safari */
 }
 
 /* ===== CARD IMAGE ===== */
@@ -87,6 +77,10 @@
   width: 260px;
   height: auto;
   display: block;
+
+  filter:
+    drop-shadow(0 0 25px rgba(255, 190, 80, 0.6))
+    drop-shadow(0 0 50px rgba(255, 160, 0, 0.4));
 }
 
 /* ===== TABLET ===== */
@@ -109,11 +103,11 @@
   }
 }
 
-/* ===== MOBILE (HORIZONTAL SCROLL) ===== */
+/* ===== MOBILE ===== */
 @media (max-width: 768px) {
   .sectionHeader {
     gap: 10px;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
   }
 
   .headerBox {
@@ -130,6 +124,13 @@
     width: 90px;
   }
 
+  .subText {
+    font-size: 14px;
+    padding: 0 1rem;
+    margin-bottom: 2rem;
+  }
+
+  /* Horizontal scroll for cards */
   .cardsRow {
     justify-content: flex-start;
     gap: 20px;
@@ -148,6 +149,7 @@
     scroll-snap-align: center;
   }
 
+  /* Optional scrollbar styling */
   .cardsRow::-webkit-scrollbar {
     height: 6px;
   }

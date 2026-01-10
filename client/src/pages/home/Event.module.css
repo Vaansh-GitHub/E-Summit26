@@ -90,3 +90,51 @@
   object-fit: cover;
 }
 
+/* ===== MOBILE RESPONSIVENESS ===== */
+@media (max-width: 768px) {
+  .eventsSection {
+    padding: 3rem 1rem;
+  }
+
+  /* Header */
+  .sectionHeader {
+    gap: 8px;
+    margin-bottom: 1.5rem;
+  }
+
+  .headerBox {
+    width: 280px;
+    height: 120px;
+  }
+
+  .headerText {
+    font-size: 20px;
+    letter-spacing: 0.12em;
+  }
+
+  .arrowImageleft,
+  .arrowImageright {
+    width: 110px;
+    opacity: 0.65;
+  }
+
+  /* Cards row becomes horizontal scroll */
+  .eventCards {
+    width: 100%;
+    overflow-x: auto;
+    justify-content: flex-start;
+    gap: 20px;
+    padding: 0 0.5rem;
+    scroll-snap-type: x mandatory;
+  }
+
+  .eventCard {
+    flex: 0 0 auto;
+    scroll-snap-align: center;
+  }
+
+  .eventImage {
+    width: 220px;
+    height: 320px;
+  }
+}

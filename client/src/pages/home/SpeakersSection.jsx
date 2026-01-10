@@ -3,45 +3,45 @@ import styles from "./Speakers.module.css";
 export default function SpeakersSection() {
   return (
     <section className={styles.speakersSection}>
+      
+      {/* ===== HEADER ===== */}
       <div className={styles.sectionHeader}>
-        <div>
-          <img
-            src="/images/arrowleft.png"
-            alt="Previous"
-            className={styles.arrowImageleft}
-          />
-        </div>
+        <img
+          src="/images/arrowleft.png"
+          alt=""
+          className={styles.arrow}
+        />
 
         <div className={styles.headerBox}>
           <span className={styles.headerText}>SPEAKERS</span>
         </div>
 
-        <div>
-          <img
-            src="/images/arrowright.png"
-            alt="Next"
-            className={styles.arrowImageright}  
-          />
-        </div>
+        <img
+          src="/images/arrowright.png"
+          alt=""
+          className={styles.arrow}
+        />
       </div>
 
-      <div className={styles.speakerCards}>
-        <SpeakerCard />
-        <SpeakerCard />
-        <SpeakerCard />
+      {/* ===== SPEAKER CARDS ===== */}
+      <div className={styles.cardsRow}>
+        <img src="/images/speakers/bhanu.png" alt="Speaker" className={styles.cardImage} />
+        <img src="/images/speakers/chirag.png" alt="Speaker" className={styles.cardImage} />
+        <img src="/images/speakers/ashish.png" alt="Speaker" className={styles.cardImage} />
+        <img src="/images/speakers/buddha.png" alt="Speaker" className={styles.cardImage} />
+        <img src="/images/speakers/haren.png" alt="Speaker" className={styles.cardImage} />
+        <img src="/images/speakers/kamlesh.png" alt="Speaker" className={styles.cardImage} />
+        <img src="/images/speakers/mausumi.png" alt="Speaker" className={styles.cardImage} />
+        <img src="/images/speakers/nidhi.png" alt="Speaker" className={styles.cardImage} />
+        <img src="/images/speakers/sambit.png" alt="Speaker" className={styles.cardImage} />
+        <img src="/images/speakers/satyajit.png" alt="Speaker" className={styles.cardImage} />
+        <img src="/images/speakers/shibu.png" alt="Speaker" className={styles.cardImage} />
+        <img src="/images/speakers/sriparna.png" alt="Speaker" className={styles.cardImage} />
+        <img src="/images/speakers/srivatsa.png" alt="Speaker" className={styles.cardImage} />
+        <img src="/images/speakers/suman.png" alt="Speaker" className={styles.cardImage} />
+        <img src="/images/speakers/varun.png" alt="Speaker" className={styles.cardImage} />
       </div>
+
     </section>
-  );
-}
-
-function SpeakerCard() {
-  return (
-    <div className={styles.speakerCard}>
-      <img
-        src="/images/speakerframe.png"
-        alt="Speaker"
-        className={styles.speakerImage}
-      />
-    </div>
   );
 }

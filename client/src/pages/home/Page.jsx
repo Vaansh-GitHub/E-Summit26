@@ -287,6 +287,7 @@ const Page = () => {
 
           <StatsSection />
           <EventsSection />
+          <SpeakersSection />
           <PastSpeakersSection />
         </div>
 
